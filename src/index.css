@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #060911;
+  --bg-base: #0a0f1d;
+  --bg-surface: #0f172a;
+  --bg-raised: #15223a;
+  --bg-hover: #1c2c4d;
+  --border: #1b2a4a;
+  --border-bright: #273e6b;
+  --border-glow: rgba(56, 189, 248, 0.25);
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --accent-cyan: #38bdf8;
+  --accent-blue: #0284c7;
+  --accent-indigo: #6366f1;
+  --accent-purple: #8b5cf6;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+  --accent-amber: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.25);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+/* React Flow Overrides */
+.react-flow__renderer {
+  background: transparent !important;
+}
+.react-flow__background {
+  --xy-background-color: var(--bg-deep);
+}
+.react-flow__edge-path {
+  stroke: var(--border-bright);
+  stroke-width: 1.5;
+}
+.react-flow__controls {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.15) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 12px rgba(56, 189, 248, 0.05) !important;
+  backdrop-filter: blur(12px) !important;
+  overflow: hidden;
+  padding: 2px !important;
+}
+.react-flow__controls-button {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: var(--text-secondary) !important;
+  fill: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
+  margin: 2px !important;
+}
+.react-flow__controls-button:hover {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: var(--accent-cyan) !important;
+  fill: var(--accent-cyan) !important;
+}
+
+@media (max-width: 767px) {
+  .react-flow__controls {
+    bottom: 56px !important;
+    left: auto !important;
+    right: 8px !important;
+    top: auto !important;
+  }
+}
+
+.react-flow__handle {
+  background: transparent !important;
+  border: none !important;
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+}
+.react-flow__node {
+  cursor: default !important;
+}
+.react-flow__node.nopan {
+  cursor: grab !important;
+}
+
+/* Futuristic Ambient Canvas Background */
+.canvas-bg {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.03) 0%, transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.02) 0%, transparent 60%);
+  background-color: var(--bg-deep);
+}
+
+/* Sleek Input Controls */
+.sim-input {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(39, 62, 107, 0.6);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+.sim-input:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15), 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+/* Glass Surface Utilities */
+.glass-panel {
+  background: rgba(10, 15, 29, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(27, 42, 74, 0.8);
+}
+.glass-panel-subtle {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 48, 84, 0.5);
+}
+
+/* Responsive Sidebar */
+@media (min-width: 768px) {
+  .sidebar-panel {
+    width: 250px;
+    min-width: 15rem;
+    max-width: 18rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+  .sidebar-backdrop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    max-width: 85vw;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .sidebar-panel.sidebar-open {
+    transform: translateX(0);
+  }
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(6, 9, 17, 0.75);
+    backdrop-filter: blur(6px);
+  }
+}
+
+/* Responsive Simulation Log */
+.simlog-scroll {
+  height: 270px;
+}
+
+@media (max-width: 767px) {
+  .simlog-container {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    border-top: 1px solid rgba(39, 62, 107, 0.8);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .simlog-scroll {
+    height: calc(40vh - 44px);
+    max-height: 250px;
+  }
+
+  .canvas-wrapper {
+    padding-bottom: 48px;
+  }
+}
